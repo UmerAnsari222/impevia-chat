@@ -81,7 +81,7 @@ body {
 }
 
 .main_suggestion_section {
-  margin-top: 35px;
+  margin-top: 30px;
 }
 
 .suggestion-section {
@@ -90,8 +90,6 @@ body {
   text-align: center;
   /* background-color: red; */
   scroll-behavior: smooth;
-  position: absolute;
-  bottom: 0;
 }
 
 .textarea {
