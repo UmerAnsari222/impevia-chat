@@ -80,9 +80,9 @@ body {
   word-wrap: break-word;
 }
 
-/* .main_suggestion_section {
+.main_suggestion_section {
   margin-top: 20px;
-} */
+}
 
 .suggestion-section {
   gap: 10px;
