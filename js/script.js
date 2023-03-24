@@ -91,11 +91,13 @@ function onReady() {
 
 function createAndAppendChatElement(ele) {
   let textValue = document.querySelector(".textarea")
-    ? document.querySelector(".textarea").textContent
+    ? document.querySelector(".textarea").value
     : "";
   let file = document.querySelector("#file")
     ? document.querySelector("#file")
     : "";
+
+  console.log(textValue);
 
   if (textValue != "" && file.files[0] != null) {
     let img = document.createElement("img");
@@ -220,11 +222,12 @@ function createAndAppendSuggestionElement(index) {
 
       label.insertAdjacentElement("beforeend", input);
 
-      let textarea = document.createElement("div");
+      let textarea = document.createElement("textarea");
       textarea.classList.add("animate__animated");
       textarea.classList.add("animate__fadeInRight");
       textarea.classList.add("textarea");
-      textarea.setAttribute("contenteditable", true);
+      textarea.setAttribute("row", 1);
+      // textarea.setAttribute("contenteditable", true);
 
       div.style.display = "flex";
       div.style.width = "100%";

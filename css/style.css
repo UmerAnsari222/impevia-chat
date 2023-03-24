@@ -4,31 +4,17 @@
   box-sizing: border-box;
 }
 
-.chat_main {
-  background-color: #fff;
-
-  width: 100%;
-  padding: 10vh 18vw 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  /* height: calc(100vh- 200px); */
-  margin-top: 30px;
+body {
+  overflow: hidden;
 }
 
-.chat-section::-webkit-scrollbar {
-  -webkit-overflow-scrolling: touch;
-  display: none;
-}
-
-.main_logo {
+/* .main_logo {
   background-color: #fff;
   width: 100vw;
-  /* height: 100%; */
   position: fixed;
   z-index: 10000;
   top: 0;
-}
+} */
 
 .logo {
   width: 250px;
@@ -37,6 +23,24 @@
 
 .logo img {
   width: 100%;
+}
+
+.chat_main {
+  /* background-color: #fff; */
+
+  width: 100%;
+  padding: 10vh 18vw 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  margin-top: 30px;
+  /* background-color: red; */
+}
+
+.chat-section::-webkit-scrollbar {
+  -webkit-overflow-scrolling: touch;
+  display: none;
 }
 
 .chat-section {
@@ -76,22 +80,32 @@
   word-wrap: break-word;
 }
 
+.main_suggestion_section {
+  margin-top: 35px;
+}
+
 .suggestion-section {
   gap: 10px;
   margin-top: 30px;
   text-align: center;
+  /* background-color: red; */
+  scroll-behavior: smooth;
+  position: absolute;
+  bottom: 0;
 }
 
 .textarea {
   width: 100% !important;
   outline: none;
-  padding: 12px 10px;
+  /* padding: 12px 10px; */
+  padding: 0px 10px;
+  padding-top: 10px;
   border-radius: 30px;
   background-color: #f5f6f6;
   color: black;
-  box-shadow: 3px 10px 16px 0px rgba(199, 199, 199, 0.75);
+  /* box-shadow: 3px 10px 16px 0px rgba(199, 199, 199, 0.75);
   -webkit-box-shadow: 3px 10px 16px 0px rgba(199, 199, 199, 0.75);
-  -moz-box-shadow: 3px 10px 16px 0px rgba(199, 199, 199, 0.75);
+  -moz-box-shadow: 3px 10px 16px 0px rgba(199, 199, 199, 0.75); */
   resize: none;
   overflow: hidden;
   text-align: start;
@@ -109,7 +123,7 @@ i {
   width: 100% !important;
   display: flex;
   /* background: red; */
-  align-items: end;
+  align-items: center;
   justify-content: space-between;
   gap: 10px;
 }
@@ -153,7 +167,7 @@ input[type="file"] {
 }
 .slick-track-reset {
   display: block !important;
-  width: 50% !important;
+  width: 100% !important;
   margin: 0 auto;
 }
 
@@ -179,7 +193,9 @@ input[type="file"] {
 
 @media screen and (max-width: 600px) {
   .chat_main {
-    padding: 5vh 8vw 1.5rem;
+    padding: 5vh 0vw 1.5rem;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
   }
 }
 
@@ -188,11 +204,11 @@ input[type="file"] {
     height: 60vh;
   }
   .chat_main {
-    padding: 10vh 4vw 1.5rem;
+    /* padding: 10vh 4vw 1.5rem; */
   }
 
   .suggestion-section {
-    width: 90%;
+    width: 100%;
     overflow: hidden;
     margin: 10px auto;
   }
