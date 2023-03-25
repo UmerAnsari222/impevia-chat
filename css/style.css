@@ -16,11 +16,8 @@ body {
 
 .main_logo {
   background-color: #fff;
-  /* width: 100vw; */
-  /* position: fixed;
-  z-index: 10000;
-  top: 0; */
-  background-color: red;
+
+  /* background-color: red; */
 }
 
 .logo {
@@ -40,17 +37,7 @@ body {
   -webkit-box-pack: justify;
   justify-content: space-between;
   transition: height 300ms ease 0s;
-
-  /* background-color: #fff; */
-  /* 
-  width: 100%;
-  padding: 0vh 18vw 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: calc(100% - 4.5rem);
-  margin-top: 10px; */
-  /* background-color: red; */
+  background-color: #fff;
 }
 
 .chat-section::-webkit-scrollbar {
