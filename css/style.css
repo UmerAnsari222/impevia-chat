@@ -52,6 +52,7 @@ body {
   padding: 0 10px;
   background-color: #fff;
   position: relative;
+  padding-top: 20px;
 }
 
 .user-chat {
@@ -75,9 +76,9 @@ body {
   background-color: #6144ff;
   max-width: 300px;
   width: fit-content;
-  text-align: end;
+  text-align: start;
   margin-left: auto;
-  color: #e0bfff;
+  color: #fff;
   margin-top: 5px;
   margin-bottom: 5px;
   word-wrap: break-word;
@@ -92,25 +93,44 @@ body {
   margin-top: 30px;
   text-align: center;
   /* background-color: red; */
-  scroll-behavior: smooth;
+}
+
+.text_field {
+  background-color: #f5f5f5;
+  width: 80%;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: flex-end;
+  padding: 5px 10px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.076) 0px 1px 2px 0px;
+}
+
+.textarea::-webkit-scrollbar {
+  display: none;
 }
 
 .textarea {
-  width: 100% !important;
+  width: 100%;
+  height: 37px;
   outline: none;
-  /* padding: 12px 10px; */
-  padding: 0px 10px;
-  padding-top: 10px;
-  border-radius: 30px;
-  background-color: #f6f6f6;
-  color: black;
-  resize: none;
-  overflow: hidden;
-  text-align: start;
-  margin: 0 !important;
   border: none;
-  font-size: 16px;
-  /* min-height: 20px !important; */
+  resize: none;
+  background: none;
+  font-size: 20px;
+  line-height: 22px;
+  padding: 8px 5px 0 7px;
+  overflow-y: auto;
+}
+
+.textarea::placeholder {
+  color: #7f7f7f;
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+  line-height: 22px;
 }
 
 i {
@@ -124,7 +144,7 @@ i {
   display: flex;
   /* background: red; */
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   gap: 10px;
 }
 .suggestion-section button.sent-button {

@@ -77,6 +77,15 @@ function onReady() {
     ".suggestion-section button"
   );
 
+  if (document.querySelector(".textarea")) {
+    console.log("Hello textarea");
+    document.querySelector(".textarea").addEventListener("input", function () {
+      this.style.height = "37px";
+      this.style.height =
+        (this.scrollHeight > 80 ? 80 : this.scrollHeight) + "px";
+    });
+  }
+
   suggestionSection.forEach((ele) => {
     ele.addEventListener("click", (e) => {
       createAndAppendChatElement(ele);
@@ -220,6 +229,10 @@ function createAndAppendSuggestionElement(index) {
 
       label.insertAdjacentElement("beforeend", input);
 
+      let textareaDiv = document.createElement("div");
+
+      textareaDiv.classList.add("text_field");
+
       let textarea = document.createElement("textarea");
       textarea.classList.add("animate__animated");
       textarea.classList.add("animate__fadeInRight");
@@ -227,10 +240,12 @@ function createAndAppendSuggestionElement(index) {
       textarea.setAttribute("row", 1);
       textarea.setAttribute("placeholder", "Aa");
 
+      textareaDiv.insertAdjacentElement("beforeend", textarea);
+
       div.style.display = "flex";
       div.style.width = "100%";
       div.insertAdjacentElement("beforeend", label);
-      div.insertAdjacentElement("beforeend", textarea);
+      div.insertAdjacentElement("beforeend", textareaDiv);
 
       let button = document.createElement("button");
       button.classList.add("animate__animated");
@@ -277,6 +292,9 @@ function handelSlider(index) {
       slidesToShow: 3,
       arrows: false,
       autoplay: false,
+      swipe: true,
+      swipeToSlide: true,
+      touchMove: true,
     });
   }
 }
