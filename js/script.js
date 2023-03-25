@@ -97,8 +97,6 @@ function createAndAppendChatElement(ele) {
     ? document.querySelector("#file")
     : "";
 
-  console.log(textValue);
-
   if (textValue != "" && file.files[0] != null) {
     let img = document.createElement("img");
     var reader = new FileReader();
@@ -227,7 +225,7 @@ function createAndAppendSuggestionElement(index) {
       textarea.classList.add("animate__fadeInRight");
       textarea.classList.add("textarea");
       textarea.setAttribute("row", 1);
-      // textarea.setAttribute("contenteditable", true);
+      textarea.setAttribute("placeholder", "Aa");
 
       div.style.display = "flex";
       div.style.width = "100%";
