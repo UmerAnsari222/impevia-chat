@@ -72,7 +72,8 @@ const questions = [
 ];
 
 function onReady() {
-  scrollingElement.scrollTop = scrollingElement.scrollHeight;
+  // scrollingElement.scrollTop = scrollingElement.scrollHeight;
+
   let suggestionSection = document.querySelectorAll(
     ".suggestion-section button"
   );
@@ -164,7 +165,6 @@ function createAndAppendChatElement(ele) {
 
 function createAndAppendQuestion(index) {
   if (questions.length != index) {
-    // if (questions[index].input === "button") {
     let div = document.createElement("div");
     let p = document.createElement("p");
     p.innerText = questions[index].title;
@@ -172,10 +172,9 @@ function createAndAppendQuestion(index) {
     div.classList.add("animate__animated");
     div.classList.add("animate__fadeInUp");
     div.appendChild(p);
-    chatSection.insertAdjacentElement("beforeend", div);
-    // }else if(questions[index].input === "textarea"){
-
-    // }
+    setTimeout(() => {
+      chatSection.insertAdjacentElement("beforeend", div);
+    }, 500);
   }
 }
 

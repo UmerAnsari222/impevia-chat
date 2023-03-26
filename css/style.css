@@ -15,14 +15,22 @@ body {
 }
 
 .main_logo {
-  background-color: #fff;
-
-  /* background-color: red; */
+  background-color: red;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  height: 4.5rem;
+  width: 100%;
+  backdrop-filter: blur(2px);
+  position: relative;
+  padding: 0px 1rem;
+  box-sizing: border-box;
 }
 
 .logo {
   width: 250px;
-  padding: 20px 1.5rem;
 }
 
 .logo img {
@@ -40,19 +48,19 @@ body {
   background-color: #fff;
 }
 
-.chat-section::-webkit-scrollbar {
-  -webkit-overflow-scrolling: touch;
-  display: none;
-  scroll-behavior: smooth;
-}
-
 .chat-section {
-  /* height: 50vh; */
   overflow: auto;
   padding: 0 10px;
   background-color: #fff;
   position: relative;
-  padding-top: 20px;
+  margin-top: 10px;
+  transition: all 0.5ms ease-in-out;
+}
+
+.chat-section::-webkit-scrollbar {
+  -webkit-overflow-scrolling: touch;
+  display: none;
+  scroll-behavior: smooth;
 }
 
 .user-chat {
@@ -84,14 +92,9 @@ body {
   word-wrap: break-word;
 }
 
-.main_suggestion_section {
-  /* margin-top: 30px; */
-}
-
 .suggestion-section {
   gap: 10px;
   margin-top: 30px;
-  text-align: center;
   /* background-color: red; */
 }
 
@@ -184,6 +187,9 @@ input[type="file"] {
 
 .slick-track {
   display: flex !important;
+  width: 100% !important;
+  /* background-color: red; */
+  margin: 0 auto;
 }
 .slick-track-reset {
   display: block !important;
@@ -205,7 +211,7 @@ input[type="file"] {
   user-select: none;
 
   margin-right: 20px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   box-shadow: 3px 10px 16px 0px rgba(199, 199, 199, 0.75);
   -webkit-box-shadow: 3px 10px 16px 0px rgba(199, 199, 199, 0.75);
   -moz-box-shadow: 3px 10px 16px 0px rgba(199, 199, 199, 0.75);
