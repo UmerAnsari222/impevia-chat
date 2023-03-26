@@ -72,7 +72,7 @@ const questions = [
 ];
 
 function onReady() {
-  // scrollingElement.scrollTop = scrollingElement.scrollHeight;
+  scrollingElement.scrollTop = scrollingElement.scrollHeight;
 
   let suggestionSection = document.querySelectorAll(
     ".suggestion-section button"
