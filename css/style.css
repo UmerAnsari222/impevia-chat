@@ -55,6 +55,7 @@ body {
   position: relative;
   margin-top: 10px;
   transition: all 0.5ms ease-in-out;
+  flex: 1;
 }
 
 .chat-section::-webkit-scrollbar {
@@ -202,19 +203,19 @@ input[type="file"] {
   border-radius: 30px;
   line-height: 25px;
   font-size: 16px;
-  background-color: #f1eef1;
+  background-color: #f5f5f6;
   color: rgb(18, 18, 18);
   width: fit-content;
   border: none;
   cursor: pointer;
   min-width: fit-content;
   user-select: none;
-
+  font-weight: 600;
   margin-right: 20px;
   /* margin-top: 10px; */
-  box-shadow: 3px 10px 16px 0px rgba(199, 199, 199, 0.75);
+  /* box-shadow: 3px 10px 16px 0px rgba(199, 199, 199, 0.75);
   -webkit-box-shadow: 3px 10px 16px 0px rgba(199, 199, 199, 0.75);
-  -moz-box-shadow: 3px 10px 16px 0px rgba(199, 199, 199, 0.75);
+  -moz-box-shadow: 3px 10px 16px 0px rgba(199, 199, 199, 0.75); */
 }
 
 @media screen and (max-width: 600px) {
