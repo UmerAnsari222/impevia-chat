@@ -95,13 +95,37 @@ body {
 
 .suggestion-section {
   gap: 10px;
-  margin-top: 30px;
+  /* margin-top: 30px; */
   width: 100%;
+
   /* background-color: red; */
-  overflow: auto;
-  padding: 10px 0;
+  padding: 10px 10px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: #333; */
+  overflow: auto;
+  white-space: nowrap;
+  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
+}
+
+.suggestion-section::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+.suggestion-section::-webkit-scrollbar {
+  width: 3px;
+  background-color: #f5f5f5;
+  height: 10px;
+}
+
+.suggestion-section::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  background-color: #eaeaea;
 }
 
 .text_field {
@@ -203,6 +227,14 @@ input[type="file"] {
   margin: 0 auto;
 }
 
+/* .suggestion-section button {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+} */
+
 .suggestion-section button {
   padding: 8px 25px;
   border-radius: 30px;
@@ -214,13 +246,9 @@ input[type="file"] {
   border: none;
   cursor: pointer;
   min-width: fit-content;
-  user-select: none;
   font-weight: 600;
   margin-right: 20px;
-  /* margin-top: 10px; */
-  /* box-shadow: 3px 10px 16px 0px rgba(199, 199, 199, 0.75);
-  -webkit-box-shadow: 3px 10px 16px 0px rgba(199, 199, 199, 0.75);
-  -moz-box-shadow: 3px 10px 16px 0px rgba(199, 199, 199, 0.75); */
+  user-select: none;
 }
 
 @media screen and (max-width: 600px) {
@@ -232,18 +260,18 @@ input[type="file"] {
 }
 
 @media screen and (max-width: 400px) {
-  .chat-section {
-    /* height: 50vh; */
-  }
-  .chat_main {
-    /* padding: 10vh 4vw 1.5rem; */
-  }
-
   .suggestion-section {
     width: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
     margin: 10px auto;
+    align-items: start;
+    justify-content: start;
   }
+
+  .suggestion-section::-webkit-scrollbar {
+    display: none;
+  }
+
   .slick-track-reset {
     width: 100% !important;
   }
