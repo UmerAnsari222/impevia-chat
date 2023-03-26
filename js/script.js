@@ -284,20 +284,20 @@ function createAndAppendSuggestionElement(index) {
   }
 }
 
-function handelSlider(index) {
-  if (questions.length != index) {
-    $(".suggestion-section").slick({
-      autoplay: false,
-      speed: 10,
-      infinite: false,
-      slidesToShow: 3,
-      arrows: false,
-      swipe: true,
-      swipeToSlide: true,
-      touchMove: true,
-    });
-  }
-}
+// function handelSlider(index) {
+//   if (questions.length != index) {
+//     $(".suggestion-section").slick({
+//       autoplay: false,
+//       speed: 10,
+//       infinite: false,
+//       slidesToShow: 3,
+//       arrows: false,
+//       swipe: true,
+//       swipeToSlide: true,
+//       touchMove: true,
+//     });
+//   }
+// }
 
 createAndAppendQuestion(questionIndex);
 createAndAppendSuggestionElement(questionIndex);
