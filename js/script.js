@@ -93,7 +93,7 @@ function onReady() {
       questionIndex++;
       createAndAppendQuestion(questionIndex);
       createAndAppendSuggestionElement(questionIndex);
-      handelSlider(questionIndex);
+      // handelSlider(questionIndex);
       onReady();
     });
   });
@@ -302,4 +302,4 @@ function handelSlider(index) {
 createAndAppendQuestion(questionIndex);
 createAndAppendSuggestionElement(questionIndex);
 onReady();
-handelSlider();
+// handelSlider();
