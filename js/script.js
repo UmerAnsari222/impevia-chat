@@ -8,6 +8,7 @@ const questions = [
     id: 1,
     title: "Vad behöver du hjälp med?",
     input: "button",
+    placeholder: "",
     answers: [
       "Skapa ny hemsida",
       "Utveckling av befintlig hemsida",
@@ -22,18 +23,22 @@ const questions = [
     id: 2,
     title: "Önskar du ett fast pris eller ett pris per timme?",
     input: "button",
+    placeholder: "",
     answers: ["Fast pris", "Pris per timme"],
   },
   {
     id: 3,
     title: "När vill du bli kontaktad?",
     input: "button",
+    placeholder: "",
     answers: ["Så snart som möjligt", "Förmiddag", "Eftermiddag", "Kväll"],
   },
   {
     id: 4,
     title: "Plats",
     input: "button",
+    placeholder: "",
+
     answers: [
       "Blekinge",
       "Dalarna",
@@ -61,25 +66,45 @@ const questions = [
     id: 5,
     title: "Vem representerar du?",
     input: "button",
+    placeholder: "",
     answers: ["Privatperson", "Företag", "Förening", "Myndighet"],
   },
   {
     id: 6,
     title: "Beskriv uppdraget",
     input: "textarea",
+    placeholder: "Berätta mer…",
+    answers: [],
+  },
+  {
+    id: 7,
+    title: "Vad heter du?",
+    input: "text",
+    placeholder: "Namn",
+    answers: [],
+  },
+  {
+    id: 8,
+    title: "Ange e-postadress.",
+    input: "text",
+    placeholder: "E-post",
+    answers: [],
+  },
+  {
+    id: 8,
+    title: "Ange telefonummer.",
+    input: "text",
+    placeholder: "Telefon",
     answers: [],
   },
 ];
 
 function onReady() {
-  scrollingElement.scrollTop = scrollingElement.scrollHeight;
-
   let suggestionSection = document.querySelectorAll(
     ".suggestion-section button"
   );
 
   if (document.querySelector(".textarea")) {
-    console.log("Hello textarea");
     document.querySelector(".textarea").addEventListener("input", function () {
       this.style.height = "37px";
       this.style.height =
@@ -90,77 +115,94 @@ function onReady() {
   suggestionSection.forEach((ele) => {
     ele.addEventListener("click", (e) => {
       createAndAppendChatElement(ele);
-      questionIndex++;
-      createAndAppendQuestion(questionIndex);
-      createAndAppendSuggestionElement(questionIndex);
-      // handelSlider(questionIndex);
       onReady();
     });
   });
 }
 
 function createAndAppendChatElement(ele) {
+  console.log(ele.textContent);
   let textValue = document.querySelector(".textarea")
     ? document.querySelector(".textarea").value
     : "";
-  let file = document.querySelector("#file")
-    ? document.querySelector("#file")
-    : "";
 
-  if (textValue != "" && file.files[0] != null) {
-    let img = document.createElement("img");
-    var reader = new FileReader();
-    reader.onload = function (e) {
-      img.setAttribute("id", "image");
-      img.classList.add("image");
-      img.setAttribute("src", e.target.result);
-      chatSection.insertAdjacentElement("beforeend", img);
-    };
+  if (document.querySelector("#file")) {
+    let file = document.querySelector("#file")
+      ? document.querySelector("#file")
+      : "";
+    if (textValue != "" && file?.files[0] != null) {
+      let img = document.createElement("img");
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        img.setAttribute("id", "image");
+        img.classList.add("image");
+        img.setAttribute("src", e.target.result);
+        chatSection.insertAdjacentElement("beforeend", img);
+      };
 
-    reader.readAsDataURL(file.files[0]);
+      reader.readAsDataURL(file.files[0]);
 
-    let div = document.createElement("div");
-    let p = document.createElement("p");
-    p.innerText = textValue;
-    div.classList.add("my-chat");
-    div.classList.add("animate__animated");
-    div.classList.add("animate__fadeInUp");
-    div.appendChild(p);
-    chatSection.insertAdjacentElement("beforeend", div);
+      let div = document.createElement("div");
+      let p = document.createElement("p");
+      p.innerText = textValue;
+      div.classList.add("my-chat");
+      div.classList.add("animate__animated");
+      div.classList.add("animate__fadeInUp");
+      div.appendChild(p);
+      chatSection.insertAdjacentElement("beforeend", div);
 
-    textValue.textContent = "";
-    file.files[0] = null;
-  } else if (file != "" && file.files[0] != null) {
-    let img = document.createElement("img");
-    var reader = new FileReader();
-    reader.onload = function (e) {
-      img.setAttribute("id", "image");
-      img.classList.add("image");
-      img.setAttribute("src", e.target.result);
-      chatSection.insertAdjacentElement("beforeend", img);
-    };
+      textValue.textContent = "";
+      restart();
+    } else if (textValue != "") {
+      let div = document.createElement("div");
+      let p = document.createElement("p");
+      p.innerText = textValue;
+      div.classList.add("my-chat");
+      div.classList.add("animate__animated");
+      div.classList.add("animate__fadeInUp");
+      div.appendChild(p);
+      chatSection.insertAdjacentElement("beforeend", div);
+      restart();
+    } else if (file != "" && file.files[0] != null) {
+      let img = document.createElement("img");
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        img.setAttribute("id", "image");
+        img.classList.add("image");
+        img.setAttribute("src", e.target.result);
+        chatSection.insertAdjacentElement("beforeend", img);
+      };
 
-    reader.readAsDataURL(file.files[0]);
-    document.querySelector("#file").file.files[0] = null;
-  } else if (textValue != "") {
-    let div = document.createElement("div");
-    let p = document.createElement("p");
-    p.innerText = textValue;
-    div.classList.add("my-chat");
-    div.classList.add("animate__animated");
-    div.classList.add("animate__fadeInUp");
-    div.appendChild(p);
-    chatSection.insertAdjacentElement("beforeend", div);
-  } else if (ele.textContent !== "Submit") {
-    let div = document.createElement("div");
-    let p = document.createElement("p");
-    p.innerText = ele.textContent;
-    div.classList.add("my-chat");
-    div.classList.add("animate__animated");
-    div.classList.add("animate__fadeInUp");
-    div.appendChild(p);
-    chatSection.insertAdjacentElement("beforeend", div);
+      reader.readAsDataURL(file.files[0]);
+      restart();
+    }
+  } else {
+    if (textValue != "") {
+      let div = document.createElement("div");
+      let p = document.createElement("p");
+      p.innerText = textValue;
+      div.classList.add("my-chat");
+      div.classList.add("animate__animated");
+      div.classList.add("animate__fadeInUp");
+      div.appendChild(p);
+      chatSection.insertAdjacentElement("beforeend", div);
+      restart();
+    }
+    if (ele.textContent !== "") {
+      // console.log("Hello---------------");
+      let div = document.createElement("div");
+      let p = document.createElement("p");
+      p.innerText = ele.textContent;
+      div.classList.add("my-chat");
+      div.classList.add("animate__animated");
+      div.classList.add("animate__fadeInUp");
+      div.appendChild(p);
+      chatSection.insertAdjacentElement("beforeend", div);
+      restart();
+    }
   }
+
+  scrollingElement.scrollTop = scrollingElement.scrollHeight;
 }
 
 function createAndAppendQuestion(index) {
@@ -174,18 +216,12 @@ function createAndAppendQuestion(index) {
     div.appendChild(p);
     setTimeout(() => {
       chatSection.insertAdjacentElement("beforeend", div);
+      scrollingElement.scrollTop = scrollingElement.scrollHeight;
     }, 500);
   }
 }
 
 function createAndAppendSuggestionElement(index) {
-  document
-    .querySelector(".suggestion-section")
-    .classList.remove("slick-initialized");
-  document
-    .querySelector(".suggestion-section")
-    .classList.remove("slick-slider");
-
   document.querySelector(".suggestion-section").innerHTML = "";
 
   if (questions.length != index) {
@@ -203,10 +239,6 @@ function createAndAppendSuggestionElement(index) {
           .insertAdjacentElement("beforeend", button);
       }
     } else if (questions[index].input === "textarea") {
-      setTimeout(() => {
-        let slickTrack = document.querySelector(".slick-track");
-        slickTrack.classList.replace("slick-track", "slick-track-reset");
-      }, 200);
       let div = document.createElement("div");
       div.classList.add("file-section");
 
@@ -237,13 +269,51 @@ function createAndAppendSuggestionElement(index) {
       textarea.classList.add("animate__fadeInRight");
       textarea.classList.add("textarea");
       textarea.setAttribute("row", 1);
-      textarea.setAttribute("placeholder", "Berätta mer…");
+      textarea.setAttribute("placeholder", questions[index].placeholder);
 
       textareaDiv.insertAdjacentElement("beforeend", textarea);
 
       div.style.display = "flex";
       div.style.width = "100%";
       div.insertAdjacentElement("beforeend", label);
+      div.insertAdjacentElement("beforeend", textareaDiv);
+
+      let button = document.createElement("button");
+      button.classList.add("animate__animated");
+      button.classList.add("animate__fadeInRight");
+      button.classList.add("sent-button");
+
+      let img = document.createElement("img");
+
+      img.setAttribute("src", "./assets/send.svg");
+      img.classList.add("animate__animated");
+      img.classList.add("animate__fadeInRight");
+      button.insertAdjacentElement("beforeend", img);
+      div.insertAdjacentElement("beforeend", button);
+
+      document
+        .querySelector(".suggestion-section")
+        .insertAdjacentElement("beforeend", div);
+    } else if (questions[index].input === "text") {
+      let div = document.createElement("div");
+      div.classList.add("file-section");
+
+      let textareaDiv = document.createElement("div");
+
+      textareaDiv.classList.add("text_field");
+
+      let textarea = document.createElement("textarea");
+      textarea.classList.add("animate__animated");
+      textarea.classList.add("animate__fadeInRight");
+      textarea.classList.add("textarea");
+      textarea.setAttribute("row", 1);
+      textarea.setAttribute("required", true);
+      textarea.setAttribute("placeholder", questions[index].placeholder);
+
+      textareaDiv.insertAdjacentElement("beforeend", textarea);
+
+      div.style.display = "flex";
+      div.style.width = "100%";
       div.insertAdjacentElement("beforeend", textareaDiv);
 
       let button = document.createElement("button");
@@ -280,6 +350,12 @@ function createAndAppendSuggestionElement(index) {
 //     });
 //   }
 // }
+
+function restart() {
+  questionIndex++;
+  createAndAppendQuestion(questionIndex);
+  createAndAppendSuggestionElement(questionIndex);
+}
 
 createAndAppendQuestion(questionIndex);
 createAndAppendSuggestionElement(questionIndex);
