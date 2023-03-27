@@ -95,8 +95,8 @@ body {
   text-align: start;
   margin-left: auto;
   color: #fff;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   word-wrap: break-word;
 }
 
@@ -163,6 +163,7 @@ body {
   line-height: 22px;
   padding: 8px 5px 0 7px;
   overflow-y: auto;
+  color: #000000;
 }
 
 .textarea::placeholder {
@@ -267,6 +268,9 @@ input[type="file"] {
 }
 
 @media screen and (max-width: 400px) {
+  .logo {
+    width: 190px;
+  }
   .suggestion-section {
     width: 100%;
     /* overflow: hidden; */

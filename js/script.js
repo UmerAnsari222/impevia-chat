@@ -237,7 +237,7 @@ function createAndAppendSuggestionElement(index) {
       textarea.classList.add("animate__fadeInRight");
       textarea.classList.add("textarea");
       textarea.setAttribute("row", 1);
-      textarea.setAttribute("placeholder", "Aa");
+      textarea.setAttribute("placeholder", "Berätta mer…");
 
       textareaDiv.insertAdjacentElement("beforeend", textarea);
 
@@ -252,34 +252,16 @@ function createAndAppendSuggestionElement(index) {
       button.classList.add("sent-button");
 
       let img = document.createElement("img");
-      img.setAttribute(
-        "src",
-        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABkklEQVRIS71VQVLCQBCcWagilB7wBz4hF8WjT4gvgB8Iog/grGh4geEH8QccQQ/mB/IDOGgRKJJhswjFQrLZGDDn2e7pmZ4OwpE/PDI+/C9B9d5/ASITCXqD57JzCHWSgmrL/wQg8xd4xInaeYlkgpWCxl7niPbwyWj+RZFEcHU3rRPCayIQJ8IFdQd2eaRLJhGYjXGlVDDGqY8zEO25qNqafnGC81QSUYAuBtRUKdojuHj4NhkVa7G7SJ6dSxD03jsn7m6J8g4uWz8WQqHGnWVpKvKQ+I62LK51aGI3rFQHxFu98aE77Bg3Yog6nUUEBjMsEgSbO1E81SAQoEXDJAI+IuQjoopGM32+u7dZOHM8+2wSqyBaMgZoITIOrOsm6Efx4oe+uwZeN5PTptAPWdD8eDz1ktRJBMKiYYHnkepDLp28NOBYBeqoiICjjhdtVcfKO+BXHOVQXS7CCVHQZSFzsmRQrAI5JlbA83Bu7y5Ow02bkp3/gVBwza3W3bZaFsBMUZEHONGmhwDdxtCKijykS2MFqxmVxfFkAAAAAElFTkSuQmCC"
-      );
+
+      img.setAttribute("src", "./assets/send.svg");
       img.classList.add("animate__animated");
       img.classList.add("animate__fadeInRight");
       button.insertAdjacentElement("beforeend", img);
       div.insertAdjacentElement("beforeend", button);
 
-      {
-        /* <i class="fa-duotone fa-paper-plane-top"></i> */
-      }
-      // let iSend = document.createElement("i");
-      // iSend.classList.add("fa-duotone");
-      // iSend.classList.add("fa-paper-plane-top");
-      // // button.classList.add("button-full-width");
-
-      // button.insertAdjacentElement("beforeend", iSend);
-
-      // div.insertAdjacentElement("beforeend", button);
-
       document
         .querySelector(".suggestion-section")
         .insertAdjacentElement("beforeend", div);
-
-      // document
-      //   .querySelector(".suggestion-section")
-      //   .insertAdjacentElement("beforeend", button);
     }
   }
 }
