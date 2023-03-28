@@ -124,7 +124,6 @@ function onReady() {
   suggestionSection.forEach((ele) => {
     ele.addEventListener("click", (e) => {
       createAndAppendChatElement(ele);
-      onReady();
     });
   });
 }
@@ -138,6 +137,8 @@ function createAndAppendChatElement(ele) {
     let file = document.querySelector("#file")
       ? document.querySelector("#file")
       : "";
+    chatSection.innerHTML = "";
+
     if (textValue != "" && file?.files[0] != null) {
       let img = document.createElement("img");
       var reader = new FileReader();
@@ -165,7 +166,16 @@ function createAndAppendChatElement(ele) {
       chatSection.insertAdjacentElement("beforeend", div);
 
       textValue.textContent = "";
-      restart();
+      setTimeout(() => {
+        console.log("INSIDE");
+        chatSection.replaceChildren("");
+      }, 1200);
+
+      setTimeout(() => {
+        console.log("OUTSIDE");
+        restart();
+        onReady();
+      }, 700);
     } else if (textValue != "") {
       let div = document.createElement("div");
       let p = document.createElement("p");
@@ -175,7 +185,16 @@ function createAndAppendChatElement(ele) {
       div.classList.add("animate__fadeInUp");
       div.appendChild(p);
       chatSection.insertAdjacentElement("beforeend", div);
-      restart();
+      setTimeout(() => {
+        console.log("INSIDE");
+        chatSection.replaceChildren("");
+      }, 1200);
+
+      setTimeout(() => {
+        console.log("OUTSIDE");
+        restart();
+        onReady();
+      }, 700);
     } else if (file != "" && file.files[0] != null) {
       let img = document.createElement("img");
       var reader = new FileReader();
@@ -187,7 +206,16 @@ function createAndAppendChatElement(ele) {
       };
 
       reader.readAsDataURL(file.files[0]);
-      restart();
+      setTimeout(() => {
+        console.log("INSIDE");
+        chatSection.replaceChildren("");
+      }, 1200);
+
+      setTimeout(() => {
+        console.log("OUTSIDE");
+        restart();
+        onReady();
+      }, 700);
     }
   } else {
     if (textValue != "") {
@@ -199,7 +227,16 @@ function createAndAppendChatElement(ele) {
       div.classList.add("animate__fadeInUp");
       div.appendChild(p);
       chatSection.insertAdjacentElement("beforeend", div);
-      restart();
+      setTimeout(() => {
+        console.log("INSIDE");
+        chatSection.replaceChildren("");
+      }, 1200);
+
+      setTimeout(() => {
+        console.log("OUTSIDE");
+        restart();
+        onReady();
+      }, 700);
     }
     if (ele.textContent !== "") {
       let div = document.createElement("div");
@@ -210,7 +247,17 @@ function createAndAppendChatElement(ele) {
       div.classList.add("animate__fadeInUp");
       div.appendChild(p);
       chatSection.insertAdjacentElement("beforeend", div);
-      restart();
+
+      setTimeout(() => {
+        console.log("INSIDE");
+        chatSection.replaceChildren("");
+      }, 1200);
+
+      setTimeout(() => {
+        console.log("OUTSIDE");
+        restart();
+        onReady();
+      }, 700);
     }
   }
 
@@ -230,7 +277,7 @@ function createAndAppendQuestion(index) {
     setTimeout(() => {
       chatSection.insertAdjacentElement("beforeend", div);
       scrollingElement.scrollTop = scrollingElement.scrollHeight;
-    }, 500);
+    }, 900);
   } else {
     messages.forEach((message) => {
       let div = document.createElement("div");
@@ -256,7 +303,7 @@ function createAndAppendSuggestionElement(index) {
       for (let i = 0; i < questions[index].answers.length; i++) {
         let button = document.createElement("button");
         button.classList.add("animate__animated");
-        button.classList.add("animate__fadeInRight");
+        button.classList.add("animate__fadeInLeft");
 
         button.innerText = questions[index].answers[i];
 
@@ -277,7 +324,7 @@ function createAndAppendSuggestionElement(index) {
       i.classList.add("fa-image");
 
       i.classList.add("animate__animated");
-      i.classList.add("animate__fadeInRight");
+      i.classList.add("animate__fadeInLeft");
 
       label.insertAdjacentElement("beforeend", i);
 
@@ -287,12 +334,13 @@ function createAndAppendSuggestionElement(index) {
       label.insertAdjacentElement("beforeend", input);
 
       let textareaDiv = document.createElement("div");
-
+      textareaDiv.classList.add("animate__animated");
+      textareaDiv.classList.add("animate__fadeInLeft");
       textareaDiv.classList.add("text_field");
 
       let textarea = document.createElement("textarea");
       textarea.classList.add("animate__animated");
-      textarea.classList.add("animate__fadeInRight");
+      textarea.classList.add("animate__fadeInLeft");
       textarea.classList.add("textarea");
       textarea.setAttribute("row", 1);
       textarea.setAttribute("placeholder", questions[index].placeholder);
@@ -306,14 +354,14 @@ function createAndAppendSuggestionElement(index) {
 
       let button = document.createElement("button");
       button.classList.add("animate__animated");
-      button.classList.add("animate__fadeInRight");
+      button.classList.add("animate__fadeInLeft");
       button.classList.add("sent-button");
 
       let img = document.createElement("img");
 
       img.setAttribute("src", "./assets/send.svg");
       img.classList.add("animate__animated");
-      img.classList.add("animate__fadeInRight");
+      img.classList.add("animate__fadeInLeft");
       button.insertAdjacentElement("beforeend", img);
       div.insertAdjacentElement("beforeend", button);
 
@@ -323,6 +371,8 @@ function createAndAppendSuggestionElement(index) {
     } else if (questions[index].input === "text") {
       let div = document.createElement("div");
       div.classList.add("file-section");
+      div.classList.add("animate__animated");
+      div.classList.add("animate__fadeInLeft");
 
       let textareaDiv = document.createElement("div");
 
@@ -330,7 +380,7 @@ function createAndAppendSuggestionElement(index) {
 
       let textarea = document.createElement("textarea");
       textarea.classList.add("animate__animated");
-      textarea.classList.add("animate__fadeInRight");
+      textarea.classList.add("animate__fadeInLeft");
       textarea.classList.add("textarea");
       textarea.setAttribute("row", 1);
       textarea.setAttribute("required", true);
@@ -344,14 +394,14 @@ function createAndAppendSuggestionElement(index) {
 
       let button = document.createElement("button");
       button.classList.add("animate__animated");
-      button.classList.add("animate__fadeInRight");
+      button.classList.add("animate__fadeInLeft");
       button.classList.add("sent-button");
 
       let img = document.createElement("img");
 
       img.setAttribute("src", "./assets/send.svg");
       img.classList.add("animate__animated");
-      img.classList.add("animate__fadeInRight");
+      img.classList.add("animate__fadeInLeft");
       button.insertAdjacentElement("beforeend", img);
       div.insertAdjacentElement("beforeend", button);
 
