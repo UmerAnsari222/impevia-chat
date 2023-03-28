@@ -98,6 +98,15 @@ const questions = [
     answers: [],
   },
 ];
+const messages = [
+  {
+    title: "Tack! Snart blir du kontaktad av webbutvecklare.",
+  },
+  {
+    title:
+      "Vi kommer nu att granska din förfrågan sedan kommer den att publiceras för våra anslutna leverantörer.",
+  },
+];
 
 function onReady() {
   let suggestionSection = document.querySelectorAll(
@@ -121,7 +130,6 @@ function onReady() {
 }
 
 function createAndAppendChatElement(ele) {
-  console.log(ele.textContent);
   let textValue = document.querySelector(".textarea")
     ? document.querySelector(".textarea").value
     : "";
@@ -137,7 +145,12 @@ function createAndAppendChatElement(ele) {
         img.setAttribute("id", "image");
         img.classList.add("image");
         img.setAttribute("src", e.target.result);
-        chatSection.insertAdjacentElement("beforeend", img);
+
+        let div = document.createElement("div");
+        div.classList.add("my-chat-image");
+
+        div.insertAdjacentElement("beforeend", img);
+        chatSection.insertAdjacentElement("beforeend", div);
       };
 
       reader.readAsDataURL(file.files[0]);
@@ -189,7 +202,6 @@ function createAndAppendChatElement(ele) {
       restart();
     }
     if (ele.textContent !== "") {
-      // console.log("Hello---------------");
       let div = document.createElement("div");
       let p = document.createElement("p");
       p.innerText = ele.textContent;
@@ -207,6 +219,7 @@ function createAndAppendChatElement(ele) {
 
 function createAndAppendQuestion(index) {
   if (questions.length != index) {
+    // console.log(index);
     let div = document.createElement("div");
     let p = document.createElement("p");
     p.innerText = questions[index].title;
@@ -218,6 +231,20 @@ function createAndAppendQuestion(index) {
       chatSection.insertAdjacentElement("beforeend", div);
       scrollingElement.scrollTop = scrollingElement.scrollHeight;
     }, 500);
+  } else {
+    messages.forEach((message) => {
+      let div = document.createElement("div");
+      let p = document.createElement("p");
+      p.innerText = message.title;
+      div.classList.add("user-chat");
+      div.classList.add("animate__animated");
+      div.classList.add("animate__fadeInUp");
+      div.appendChild(p);
+      setTimeout(() => {
+        chatSection.insertAdjacentElement("beforeend", div);
+        scrollingElement.scrollTop = scrollingElement.scrollHeight;
+      }, 900);
+    });
   }
 }
 
@@ -226,7 +253,6 @@ function createAndAppendSuggestionElement(index) {
 
   if (questions.length != index) {
     if (questions[index].input === "button") {
-      console.log("Hello");
       for (let i = 0; i < questions[index].answers.length; i++) {
         let button = document.createElement("button");
         button.classList.add("animate__animated");
