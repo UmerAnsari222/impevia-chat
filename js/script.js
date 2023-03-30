@@ -137,7 +137,7 @@ function createAndAppendChatElement(ele) {
     let file = document.querySelector("#file")
       ? document.querySelector("#file")
       : "";
-    chatSection.innerHTML = "";
+    // chatSection.innerHTML = "";
 
     if (textValue != "" && file?.files[0] != null) {
       let img = document.createElement("img");
