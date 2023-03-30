@@ -1,6 +1,11 @@
 const scrollingElement = document.querySelector(".chat-section");
 let chatSection = document.querySelector(".chat-section");
 
+let buttonNext = document.getElementById("button-next");
+let buttonPrevious = document.getElementById("button-privous");
+
+let suggestionSection = document.querySelector(".suggestion-section");
+
 let questionIndex = 0;
 
 const questions = [
@@ -312,6 +317,8 @@ function createAndAppendSuggestionElement(index) {
           .insertAdjacentElement("beforeend", button);
       }
     } else if (questions[index].input === "textarea") {
+      buttonNext.style.display = "none";
+      buttonPrevious.style.display = "none";
       let div = document.createElement("div");
       div.classList.add("file-section");
 
@@ -369,6 +376,9 @@ function createAndAppendSuggestionElement(index) {
         .querySelector(".suggestion-section")
         .insertAdjacentElement("beforeend", div);
     } else if (questions[index].input === "text") {
+      buttonNext.style.display = "none";
+      buttonPrevious.style.display = "none";
+
       let div = document.createElement("div");
       div.classList.add("file-section");
       div.classList.add("animate__animated");
@@ -410,6 +420,25 @@ function createAndAppendSuggestionElement(index) {
         .insertAdjacentElement("beforeend", div);
     }
   }
+  // setTimeout(() => {
+  // console.log(
+
+  if (document.body.clientWidth >= 1400) {
+    let isTrue = isOverflown(
+      suggestionSection.clientWidth,
+      suggestionSection.scrollWidth
+    );
+    if (!isTrue) {
+      buttonNext.style.display = "none";
+      buttonPrevious.style.display = "none";
+    } else {
+      buttonNext.style.display = "block";
+      buttonPrevious.style.display = "block";
+    }
+  }
+
+  // );
+  // }, 200);
 }
 
 // function handelSlider(index) {
@@ -433,7 +462,29 @@ function restart() {
   createAndAppendSuggestionElement(questionIndex);
 }
 
+function handelClickScrolling() {
+  buttonNext.onclick = () => {
+    suggestionSection.scrollLeft += 50;
+  };
+
+  buttonPrevious.onclick = () => {
+    suggestionSection.scrollLeft -= 50;
+  };
+}
+
+const isOverflown = (
+  clientWidth,
+  scrollWidth
+  // clientHeight,
+  // scrollHeight,
+) => {
+  // return scrollHeight > clientHeight || scrollWidth > clientWidth;
+  return scrollWidth > clientWidth;
+};
+
 createAndAppendQuestion(questionIndex);
 createAndAppendSuggestionElement(questionIndex);
 onReady();
+
+handelClickScrolling();
 // handelSlider();

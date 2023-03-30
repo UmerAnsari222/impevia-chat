@@ -276,9 +276,110 @@ input[type="file"] {
   border: none;
   cursor: pointer;
   min-width: fit-content;
-  font-weight: 600;
+  /* font-weight: 600; */
   margin-right: 20px;
   user-select: none;
+}
+
+.button-privous {
+  display: none;
+  background-color: transparent;
+  border: none;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+}
+.button-next {
+  display: none;
+  background-color: transparent;
+  border: none;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1700px) {
+  body {
+    background-color: transparent;
+  }
+  .chat-section {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .main_suggestion_section {
+    width: 80%;
+    margin: 0 auto;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+  }
+
+  .button-privous {
+    display: block;
+  }
+  .button-next {
+    display: block;
+  }
+
+  .suggestion-section {
+    width: 100%;
+    /* overflow: hidden; */
+    margin: 10px auto;
+    align-items: center;
+    justify-content: center;
+  }
+  .suggestion-section button {
+    margin-right: 20px;
+  }
+  .suggestion-section::-webkit-scrollbar {
+    /* display: none; */
+    scroll-behavior: smooth;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  body {
+    background-color: transparent;
+  }
+  .chat-section {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .main_suggestion_section {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: red; */
+    padding: 0 10px;
+  }
+
+  .button-privous {
+    display: block;
+  }
+  .button-next {
+    display: block;
+  }
+
+  .suggestion-section {
+    width: 100%;
+    /* overflow: hidden; */
+    margin: 10px auto;
+    align-items: center;
+    justify-content: center;
+  }
+  .suggestion-section button {
+    margin-right: 0;
+  }
+  .suggestion-section::-webkit-scrollbar {
+    display: none;
+    scroll-behavior: smooth;
+  }
 }
 
 @media screen and (max-width: 600px) {
