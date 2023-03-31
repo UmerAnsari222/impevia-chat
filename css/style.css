@@ -398,8 +398,12 @@ input[type="file"] {
     width: 100%;
     /* overflow: hidden; */
     margin: 10px auto;
-    align-items: start;
-    justify-content: start;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .suggestion-section button {
+    font-size: 12px;
   }
 
   .suggestion-section::-webkit-scrollbar {

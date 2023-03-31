@@ -420,25 +420,7 @@ function createAndAppendSuggestionElement(index) {
         .insertAdjacentElement("beforeend", div);
     }
   }
-  // setTimeout(() => {
-  // console.log(
-
-  if (document.body.clientWidth >= 1400) {
-    let isTrue = isOverflown(
-      suggestionSection.clientWidth,
-      suggestionSection.scrollWidth
-    );
-    if (!isTrue) {
-      buttonNext.style.display = "none";
-      buttonPrevious.style.display = "none";
-    } else {
-      buttonNext.style.display = "block";
-      buttonPrevious.style.display = "block";
-    }
-  }
-
-  // );
-  // }, 200);
+  showArrows();
 }
 
 // function handelSlider(index) {
@@ -472,19 +454,34 @@ function handelClickScrolling() {
   };
 }
 
-const isOverflown = (
-  clientWidth,
-  scrollWidth
-  // clientHeight,
-  // scrollHeight,
-) => {
+function isOverflown(clientWidth, scrollWidth) {
   // return scrollHeight > clientHeight || scrollWidth > clientWidth;
   return scrollWidth > clientWidth;
-};
+}
 
+function showArrows() {
+  if (document.body.clientWidth >= 1400) {
+    let isTrue = isOverflown(
+      suggestionSection.clientWidth,
+      suggestionSection.scrollWidth
+    );
+    if (!isTrue) {
+      buttonNext.style.display = "none";
+      buttonPrevious.style.display = "none";
+    } else {
+      buttonNext.style.display = "block";
+      buttonPrevious.style.display = "block";
+    }
+  }
+}
+
+window.addEventListener("resize", () => {
+  showArrows();
+});
+
+showArrows();
 createAndAppendQuestion(questionIndex);
 createAndAppendSuggestionElement(questionIndex);
 onReady();
-
 handelClickScrolling();
 // handelSlider();
