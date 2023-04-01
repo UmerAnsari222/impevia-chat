@@ -192,12 +192,10 @@ function createAndAppendChatElement(ele) {
       div.appendChild(p);
       chatSection.insertAdjacentElement("beforeend", div);
       setTimeout(() => {
-        console.log("INSIDE");
         chatSection.replaceChildren("");
       }, 1200);
 
       setTimeout(() => {
-        console.log("OUTSIDE");
         restart();
         onReady();
       }, 700);
@@ -213,12 +211,10 @@ function createAndAppendChatElement(ele) {
 
       reader.readAsDataURL(file.files[0]);
       setTimeout(() => {
-        console.log("INSIDE");
         chatSection.replaceChildren("");
       }, 1200);
 
       setTimeout(() => {
-        console.log("OUTSIDE");
         restart();
         onReady();
       }, 700);
@@ -234,12 +230,10 @@ function createAndAppendChatElement(ele) {
       div.appendChild(p);
       chatSection.insertAdjacentElement("beforeend", div);
       setTimeout(() => {
-        console.log("INSIDE");
         chatSection.replaceChildren("");
       }, 1200);
 
       setTimeout(() => {
-        console.log("OUTSIDE");
         restart();
         onReady();
       }, 700);
@@ -255,12 +249,27 @@ function createAndAppendChatElement(ele) {
       chatSection.insertAdjacentElement("beforeend", div);
 
       setTimeout(() => {
-        console.log("INSIDE");
+        document
+          .querySelector(".my-chat ")
+          .classList.remove("animate__fadeInUp");
+        // document.querySelector(".my-chat ").classList.add("animate__backOutUp");
+        document.querySelector(".my-chat ").classList.add("gotoUpBack");
+
+        document
+          .querySelector(".user-chat")
+          .classList.remove("animate__fadeInUp");
+        document.querySelector(".user-chat ").classList.add("gotoUpBack");
+
+        // document
+        //   .querySelector(".user-chat ")
+        //   .classList.add("animate__backOutUp");
+      }, 1000);
+
+      setTimeout(() => {
         chatSection.replaceChildren("");
       }, 1200);
 
       setTimeout(() => {
-        console.log("OUTSIDE");
         restart();
         onReady();
       }, 700);
