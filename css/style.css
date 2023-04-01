@@ -315,6 +315,7 @@ input[type="file"] {
     align-items: center;
     justify-content: center;
     padding: 0 10px;
+    /* background-color: red; */
   }
 
   .button-privous {
@@ -326,7 +327,7 @@ input[type="file"] {
 
   .suggestion-section {
     width: 100%;
-    /* overflow: hidden; */
+    overflow: hidden;
     margin: 10px auto;
     align-items: center;
     justify-content: center;
@@ -369,8 +370,9 @@ input[type="file"] {
   .suggestion-section {
     width: 100%;
     /* overflow: hidden; */
+    overflow: hidden;
     margin: 10px auto;
-    align-items: center;
+    align-items: start;
     justify-content: center;
   }
   .suggestion-section button {
@@ -398,12 +400,15 @@ input[type="file"] {
     width: 100%;
     /* overflow: hidden; */
     margin: 10px auto;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center;
+    justify-content: center; */
+    align-items: start;
+    justify-content: start;
   }
 
   .suggestion-section button {
-    font-size: 12px;
+    /* font-size: 12px; */
+    margin-right: 0px;
   }
 
   .suggestion-section::-webkit-scrollbar {

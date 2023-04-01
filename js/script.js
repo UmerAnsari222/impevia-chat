@@ -103,6 +103,7 @@ const questions = [
     answers: [],
   },
 ];
+
 const messages = [
   {
     title: "Tack! Snart blir du kontaktad av webbutvecklare.",
@@ -420,6 +421,7 @@ function createAndAppendSuggestionElement(index) {
         .insertAdjacentElement("beforeend", div);
     }
   }
+  suggestionForMobile();
   showArrows();
 }
 
@@ -466,11 +468,30 @@ function showArrows() {
       suggestionSection.scrollWidth
     );
     if (!isTrue) {
+      suggestionSection.style.justifyContent = "center";
+
       buttonNext.style.display = "none";
       buttonPrevious.style.display = "none";
     } else {
+      suggestionSection.style.justifyContent = "start";
+
       buttonNext.style.display = "block";
       buttonPrevious.style.display = "block";
+    }
+  }
+}
+
+function suggestionForMobile() {
+  if (document.body.clientWidth <= 400) {
+    console.log("Hello world!");
+    let isTrue = isOverflown(
+      suggestionSection.clientWidth,
+      suggestionSection.scrollWidth
+    );
+    if (!isTrue) {
+      suggestionSection.style.justifyContent = "center";
+    } else {
+      suggestionSection.style.justifyContent = "start";
     }
   }
 }
