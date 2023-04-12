@@ -26,7 +26,7 @@ body {
 }
 
 .main_logo {
-  /* background-color: red; */
+  background-color: #fff;
   display: flex;
   -webkit-box-align: center;
   align-items: center;
@@ -307,6 +307,24 @@ input[type="file"] {
 
   animation-name: example;
   animation-duration: 6s;
+}
+
+.main_footer {
+  width: 100%;
+  /* height: -moz-fit-content; */
+  height: fit-content;
+  padding: 20px 7%;
+  color: #282827;
+  z-index: 5000;
+  font-size: 14px;
+}
+
+.main_footer p {
+  font-weight: 400;
+  margin: 10px 0;
+}
+.main_footer p a {
+  color: rgb(40, 40, 39);
 }
 
 @keyframes example {
