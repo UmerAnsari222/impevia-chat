@@ -309,6 +309,13 @@ input[type="file"] {
   animation-duration: 6s;
 }
 
+.arrowImage {
+  width: 18px;
+  position: absolute;
+  right: 10px;
+  display: none;
+}
+
 .main_footer {
   width: 100%;
   /* height: -moz-fit-content; */
@@ -366,6 +373,7 @@ input[type="file"] {
     justify-content: center;
     padding: 0 10px;
     /* background-color: red; */
+    position: relative;
   }
 
   .button-privous {
@@ -445,6 +453,9 @@ input[type="file"] {
 @media screen and (max-width: 400px) {
   .logo {
     width: 190px;
+  }
+  .arrowImage {
+    display: block;
   }
   .suggestion-section {
     width: 100%;

@@ -432,6 +432,7 @@ function createAndAppendSuggestionElement(index) {
   }
   suggestionForMobile();
   showArrows();
+  scrollArrowsFind();
 }
 
 // function handelSlider(index) {
@@ -466,7 +467,6 @@ function handelClickScrolling() {
 }
 
 function isOverflown(clientWidth, scrollWidth) {
-  // return scrollHeight > clientHeight || scrollWidth > clientWidth;
   return scrollWidth > clientWidth;
 }
 
@@ -490,9 +490,34 @@ function showArrows() {
   }
 }
 
+function scrollArrowsFind() {
+  if (document.body.clientWidth <= 400) {
+    let isTrue = isOverflown(
+      suggestionSection.clientWidth,
+      suggestionSection.scrollWidth
+    );
+    if (!isTrue) {
+      document.querySelector(".arrowImage").style.display = "none";
+    } else {
+      document.querySelector(".arrowImage").style.display = "block";
+      suggestionSection.addEventListener("scroll", (e) => {
+        if (
+          suggestionSection.scrollWidth - suggestionSection.scrollLeft ===
+          suggestionSection.clientWidth
+        ) {
+          document.querySelector(".arrowImage").style.display = "none";
+        } else {
+          document.querySelector(".arrowImage").style.display = "block";
+        }
+      });
+    }
+  } else {
+    document.querySelector(".arrowImage").style.display = "none";
+  }
+}
+
 function suggestionForMobile() {
   if (document.body.clientWidth <= 400) {
-    console.log("Hello world!");
     let isTrue = isOverflown(
       suggestionSection.clientWidth,
       suggestionSection.scrollWidth
@@ -507,6 +532,7 @@ function suggestionForMobile() {
 
 window.addEventListener("resize", () => {
   showArrows();
+  scrollArrowsFind();
 });
 
 showArrows();
