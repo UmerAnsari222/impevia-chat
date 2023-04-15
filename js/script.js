@@ -501,6 +501,9 @@ function showArrows() {
       buttonNext.style.display = "block";
       buttonPrevious.style.display = "block";
     }
+  } else {
+    buttonNext.style.display = "none";
+    buttonPrevious.style.display = "none";
   }
 }
 
