@@ -11,7 +11,10 @@ let questionIndex = 0;
 const questions = [
   {
     id: 1,
-    title: "Vad behöver du hjälp med?",
+    statement: [
+      "Hej! Låt oss ta fram en offert åt dig. Det tar bara någon minut.",
+      "Vilken tjänst är du intresserad av att få en offert på?",
+    ],
     input: "button",
     placeholder: "",
     answers: [
@@ -26,21 +29,21 @@ const questions = [
   },
   {
     id: 2,
-    title: "Önskar du ett fast pris eller ett pris per timme?",
+    statement: ["Önskar du ett fast pris eller ett pris per timme?"],
     input: "button",
     placeholder: "",
     answers: ["Fast pris", "Pris per timme"],
   },
-  {
-    id: 3,
-    title: "När vill du bli kontaktad?",
-    input: "button",
-    placeholder: "",
-    answers: ["Så snart som möjligt", "Förmiddag", "Eftermiddag", "Kväll"],
-  },
+  // {
+  //   id: 3,
+  //   statement: ["När vill du bli kontaktad?"],
+  //   input: "button",
+  //   placeholder: "",
+  //   answers: ["Så snart som möjligt", "Förmiddag", "Eftermiddag", "Kväll"],
+  // },
   {
     id: 4,
-    title: "Plats",
+    statement: ["Plats"],
     input: "button",
     placeholder: "",
 
@@ -69,35 +72,41 @@ const questions = [
   },
   {
     id: 5,
-    title: "Vem representerar du?",
+    statement: ["Vem representerar du?"],
     input: "button",
     placeholder: "",
     answers: ["Privatperson", "Företag", "Förening", "Myndighet"],
   },
   {
     id: 6,
-    title: "Beskriv uppdraget",
+    statement: [
+      "Berätta lite om uppdraget.",
+      "En tydlig beskrivning underlättar för en bättre offert.",
+    ],
     input: "textarea",
     placeholder: "Berätta mer…",
     answers: [],
   },
   {
     id: 7,
-    title: "Vad heter du?",
+    statement: [
+      "För att nå dig gällande offerten behöver vi kontaktuppgifter.",
+      "Ange namn.",
+    ],
     input: "text",
     placeholder: "Namn",
     answers: [],
   },
   {
     id: 8,
-    title: "Ange e-postadress.",
+    statement: ["Ange e-postadress."],
     input: "text",
     placeholder: "E-post",
     answers: [],
   },
   {
     id: 8,
-    title: "Ange telefonummer.",
+    statement: ["Ange telefonummer."],
     input: "text",
     placeholder: "Telefon",
     answers: [],
@@ -110,7 +119,7 @@ const messages = [
   },
   {
     title:
-      "Vi kommer nu att granska din förfrågan sedan kommer den att publiceras för våra anslutna leverantörer.",
+      "Vi kommer nu att granska din förfrågan sedan kommer den att publiceras för våra anslutna leverantörer, där du kommer att kunna jämföra upp till 5 olika offerter.",
   },
 ];
 
@@ -282,17 +291,22 @@ function createAndAppendChatElement(ele) {
 function createAndAppendQuestion(index) {
   if (questions.length != index) {
     // console.log(index);
-    let div = document.createElement("div");
-    let p = document.createElement("p");
-    p.innerText = questions[index].title;
-    div.classList.add("user-chat");
-    div.classList.add("animate__animated");
-    div.classList.add("animate__fadeInUp");
-    div.appendChild(p);
-    setTimeout(() => {
-      chatSection.insertAdjacentElement("beforeend", div);
-      scrollingElement.scrollTop = scrollingElement.scrollHeight;
-    }, 900);
+
+    questions[index].statement.forEach((e) => {
+      let div = document.createElement("div");
+      let p = document.createElement("p");
+      // p.innerText = questions[index].title;
+      // console.log(e);
+      p.innerText = e;
+      div.classList.add("user-chat");
+      div.classList.add("animate__animated");
+      div.classList.add("animate__fadeInUp");
+      div.appendChild(p);
+      setTimeout(() => {
+        chatSection.insertAdjacentElement("beforeend", div);
+        scrollingElement.scrollTop = scrollingElement.scrollHeight;
+      }, 900);
+    });
   } else {
     messages.forEach((message) => {
       let div = document.createElement("div");
