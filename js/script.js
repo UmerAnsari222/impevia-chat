@@ -18,8 +18,8 @@ const questions = [
     input: "button",
     placeholder: "",
     answers: [
-      // "Skapa ny hemsida",
-      "Ny hemsida",
+      "Skapa ny hemsida",
+      // "Ny hemsida",
       "Utveckling av befintlig hemsida",
       "Sökoptimering",
       "Marknadsföring",
@@ -45,7 +45,7 @@ const questions = [
   {
     id: 4,
     // statement: ["Plats"],
-    statement: ["Varte finns du?"],
+    statement: ["Vart finns du?"],
     input: "button",
     placeholder: "",
 
@@ -147,33 +147,33 @@ function onReady() {
     file.addEventListener("input", (e) => {
       // console.log(e);
       console.log(document.querySelector(".textarea").value);
-      if (document.querySelector(".textarea").value === "") {
-        if (file != "" && file.files[0] != null) {
-          let img = document.createElement("img");
-          var reader = new FileReader();
-          reader.onload = function (e) {
-            img.setAttribute("id", "image");
-            img.classList.add("image");
-            img.setAttribute("src", e.target.result);
-            // chatSection.insertAdjacentElement("beforeend", img);
+      // if (document.querySelector(".textarea").value === "") {
+      if (file != "" && file.files[0] != null) {
+        let img = document.createElement("img");
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          img.setAttribute("id", "image");
+          img.classList.add("image");
+          img.setAttribute("src", e.target.result);
+          // chatSection.insertAdjacentElement("beforeend", img);
 
-            let div = document.createElement("div");
-            div.classList.add("my-chat-image");
+          let div = document.createElement("div");
+          div.classList.add("my-chat-image");
 
-            div.insertAdjacentElement("beforeend", img);
-            chatSection.insertAdjacentElement("beforeend", div);
-          };
+          div.insertAdjacentElement("beforeend", img);
+          chatSection.insertAdjacentElement("beforeend", div);
+        };
 
-          reader.readAsDataURL(file.files[0]);
-          setTimeout(() => {
-            chatSection.replaceChildren("");
-          }, 1200);
+        reader.readAsDataURL(file.files[0]);
+        // setTimeout(() => {
+        //   chatSection.replaceChildren("");
+        // }, 1200);
 
-          setTimeout(() => {
-            restart();
-            onReady();
-          }, 700);
-        }
+        // setTimeout(() => {
+        //   restart();
+        //   onReady();
+        // }, 700);
+        // }
       }
     });
   }
@@ -206,21 +206,21 @@ function createAndAppendChatElement(ele) {
     // chatSection.innerHTML = "";
 
     if (textValue != "" && file?.files[0] != null) {
-      let img = document.createElement("img");
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        img.setAttribute("id", "image");
-        img.classList.add("image");
-        img.setAttribute("src", e.target.result);
+      // let img = document.createElement("img");
+      // var reader = new FileReader();
+      // reader.onload = function (e) {
+      //   img.setAttribute("id", "image");
+      //   img.classList.add("image");
+      //   img.setAttribute("src", e.target.result);
 
-        let div = document.createElement("div");
-        div.classList.add("my-chat-image");
+      //   let div = document.createElement("div");
+      //   div.classList.add("my-chat-image");
 
-        div.insertAdjacentElement("beforeend", img);
-        chatSection.insertAdjacentElement("beforeend", div);
-      };
+      //   div.insertAdjacentElement("beforeend", img);
+      //   chatSection.insertAdjacentElement("beforeend", div);
+      // };
 
-      reader.readAsDataURL(file.files[0]);
+      // reader.readAsDataURL(file.files[0]);
 
       let div = document.createElement("div");
       let p = document.createElement("p");
@@ -233,12 +233,12 @@ function createAndAppendChatElement(ele) {
 
       textValue.textContent = "";
       setTimeout(() => {
-        console.log("INSIDE");
+        // console.log("INSIDE");
         chatSection.replaceChildren("");
       }, 1200);
 
       setTimeout(() => {
-        console.log("OUTSIDE");
+        // console.log("OUTSIDE");
         restart();
         onReady();
       }, 700);
@@ -260,22 +260,22 @@ function createAndAppendChatElement(ele) {
         onReady();
       }, 700);
     } else if (file != "" && file.files[0] != null) {
-      let img = document.createElement("img");
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        img.setAttribute("id", "image");
-        img.classList.add("image");
-        img.setAttribute("src", e.target.result);
-        // chatSection.insertAdjacentElement("beforeend", img);
+      // let img = document.createElement("img");
+      // var reader = new FileReader();
+      // reader.onload = function (e) {
+      //   img.setAttribute("id", "image");
+      //   img.classList.add("image");
+      //   img.setAttribute("src", e.target.result);
+      //   // chatSection.insertAdjacentElement("beforeend", img);
 
-        let div = document.createElement("div");
-        div.classList.add("my-chat-image");
+      //   let div = document.createElement("div");
+      //   div.classList.add("my-chat-image");
 
-        div.insertAdjacentElement("beforeend", img);
-        chatSection.insertAdjacentElement("beforeend", div);
-      };
+      //   div.insertAdjacentElement("beforeend", img);
+      //   chatSection.insertAdjacentElement("beforeend", div);
+      // };
 
-      reader.readAsDataURL(file.files[0]);
+      // reader.readAsDataURL(file.files[0]);
       setTimeout(() => {
         chatSection.replaceChildren("");
       }, 1200);
