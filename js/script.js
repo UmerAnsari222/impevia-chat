@@ -18,7 +18,8 @@ const questions = [
     input: "button",
     placeholder: "",
     answers: [
-      "Skapa ny hemsida",
+      // "Skapa ny hemsida",
+      "Ny hemsida",
       "Utveckling av befintlig hemsida",
       "Sökoptimering",
       "Marknadsföring",
@@ -43,7 +44,8 @@ const questions = [
   // },
   {
     id: 4,
-    statement: ["Plats"],
+    // statement: ["Plats"],
+    statement: ["Varte finns du?"],
     input: "button",
     placeholder: "",
 
@@ -136,6 +138,46 @@ function onReady() {
     });
   }
 
+  if (document.querySelector("#file")) {
+    // console.log(document.querySelector("#file"));
+    // console.log(document.querySelector(".textarea").value);
+    let file = document.querySelector("#file")
+      ? document.querySelector("#file")
+      : "";
+    file.addEventListener("input", (e) => {
+      // console.log(e);
+      console.log(document.querySelector(".textarea").value);
+      if (document.querySelector(".textarea").value === "") {
+        if (file != "" && file.files[0] != null) {
+          let img = document.createElement("img");
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            img.setAttribute("id", "image");
+            img.classList.add("image");
+            img.setAttribute("src", e.target.result);
+            // chatSection.insertAdjacentElement("beforeend", img);
+
+            let div = document.createElement("div");
+            div.classList.add("my-chat-image");
+
+            div.insertAdjacentElement("beforeend", img);
+            chatSection.insertAdjacentElement("beforeend", div);
+          };
+
+          reader.readAsDataURL(file.files[0]);
+          setTimeout(() => {
+            chatSection.replaceChildren("");
+          }, 1200);
+
+          setTimeout(() => {
+            restart();
+            onReady();
+          }, 700);
+        }
+      }
+    });
+  }
+
   suggestionSection.forEach((ele) => {
     ele.addEventListener("click", (e) => {
       createAndAppendChatElement(ele);
@@ -144,6 +186,15 @@ function onReady() {
 }
 
 function createAndAppendChatElement(ele) {
+  let suggestionSection = document.querySelectorAll(
+    ".suggestion-section button"
+  );
+
+  // console.log(suggestionSection);
+  suggestionSection.forEach((e) => {
+    e.setAttribute("disabled", true);
+  });
+
   let textValue = document.querySelector(".textarea")
     ? document.querySelector(".textarea").value
     : "";
@@ -215,7 +266,13 @@ function createAndAppendChatElement(ele) {
         img.setAttribute("id", "image");
         img.classList.add("image");
         img.setAttribute("src", e.target.result);
-        chatSection.insertAdjacentElement("beforeend", img);
+        // chatSection.insertAdjacentElement("beforeend", img);
+
+        let div = document.createElement("div");
+        div.classList.add("my-chat-image");
+
+        div.insertAdjacentElement("beforeend", img);
+        chatSection.insertAdjacentElement("beforeend", div);
       };
 
       reader.readAsDataURL(file.files[0]);
