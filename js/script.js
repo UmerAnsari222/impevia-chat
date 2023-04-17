@@ -12,7 +12,7 @@ const questions = [
   {
     id: 1,
     statement: [
-      "Hej! Låt oss ta fram förslag åt dig. Det tar bara någon minut.",
+      "Hej! Låt oss ta fram priser åt dig. Det tar bara någon minut.",
       "Vilken tjänst är du intresserad av att få ett prisförslag på?",
     ],
     input: "button",
