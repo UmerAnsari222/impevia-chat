@@ -12,8 +12,8 @@ const questions = [
   {
     id: 1,
     statement: [
-      "Hej! Låt oss ta fram priser åt dig. Det tar bara någon minut.",
-      "Vilken tjänst är du intresserad av att få ett prisförslag på?",
+      "Hej! Låt oss ta fram offerter åt dig. Det tar bara någon minut.",
+      "Vilken tjänst är du intresserad av att få offerter på?",
     ],
     input: "button",
     placeholder: "",
@@ -83,7 +83,7 @@ const questions = [
     id: 6,
     statement: [
       "Berätta lite om uppdraget.",
-      "En tydlig beskrivning underlättar för ett bättre prisförslag.",
+      "En tydlig beskrivning underlättar för bättre offerter.",
     ],
     input: "textarea",
     placeholder: "Berätta mer…",
