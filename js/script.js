@@ -18,6 +18,11 @@ const questions = [
     input: "button",
     placeholder: "",
     answers: [
+      "Front-end",
+      "Back-end",
+      "Webbutveckling",
+      "Webbdesign",
+      "Systemutveckling",
       "Skapa ny hemsida",
       // "Ny hemsida",
       "Utveckling av befintlig hemsida",
@@ -379,6 +384,7 @@ function createAndAppendQuestion(index) {
       }, 900);
     });
   }
+  checkInitialSize();
 }
 
 function createAndAppendSuggestionElement(index) {
@@ -607,7 +613,28 @@ function suggestionForMobile() {
 window.addEventListener("resize", () => {
   showArrows();
   scrollArrowsFind();
+  // checkInitialSize();
 });
+
+function checkInitialSize() {
+  let isTrue = isOverflown(
+    suggestionSection.clientWidth,
+    suggestionSection.scrollWidth
+  );
+  console.log(isTrue);
+  if (!isTrue) {
+    if (document.body.clientWidth <= 1350 && document.body.clientWidth >= 500) {
+      console.log(document.body.clientWidth);
+      suggestionSection.style.justifyContent = "start";
+    } else {
+      suggestionSection.style.justifyContent = "center";
+    }
+  } else {
+    suggestionSection.style.justifyContent = "center";
+  }
+}
+
+checkInitialSize();
 
 showArrows();
 createAndAppendQuestion(questionIndex);
