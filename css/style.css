@@ -363,6 +363,7 @@ input[type="file"] {
   body {
     background-color: transparent;
   }
+
   .chat-section {
     width: 70%;
     margin: 0 auto;
@@ -456,7 +457,7 @@ input[type="file"] {
 
 @media screen and (max-width: 400px) {
   .logo {
-    width: 190px;
+    width: 150px;
   }
   .arrowImage {
     display: block;
